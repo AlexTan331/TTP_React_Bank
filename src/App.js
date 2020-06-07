@@ -84,14 +84,14 @@ class App extends Component {
       <AddCredit
         balance={this.state.accountBalance}
         addCredit={this.addCredit}
-        {...this.state}
+        creditInfo={this.state.creditInfo}
       />
     );
     const AddDebitComponent = () => (
       <AddDebit
         balance={this.state.accountBalance}
         addDebit={this.addDebit}
-        {...this.state}
+        debitInfo={this.state.debitInfo}
       />
     );
 

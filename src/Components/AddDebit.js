@@ -35,18 +35,17 @@ class AddDebit extends Component {
       return <Redirect to="/" />;
     }
 
-    
-    // let display = this.props.debitInfo.map((debit) => {
-    //   return (
-    //     <div className="info">
-    //       <ul>
-    //         <li>Description: {debit.description}</li>
-    //         <li>Amount: {debit.amount}</li>
-    //         <li>Date: {debit.date}</li>
-    //       </ul>
-    //     </div>
-    //   );
-    // });
+    let display = this.props.debitInfo.map((debit) => {
+      return (
+        <div className="info">
+          <ul>
+            <li>Description: {debit.description}</li>
+            <li>Amount: {debit.amount}</li>
+            <li>Date: {debit.date}</li>
+          </ul>
+        </div>
+      );
+    });
 
     return (
       <>
@@ -68,6 +67,7 @@ class AddDebit extends Component {
             <button>Confirm</button>
           </form>
         </div>
+        {display}
       </>
     );
   }
