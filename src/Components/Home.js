@@ -8,6 +8,7 @@ class Home extends Component {
         <div>
           <img src="https://img.etimg.com/thumb/msid-71487585,width-300,imgsize-169788,resizemode-4/bank-getty.jpg" alt="bank"/>
           <h1>Bank of React</h1>
+          <Link to="/logIn">Log In</Link><br/>
           <Link to="/userProfile">User</Link><br/>
           <Link to="/addCredit">Add credit</Link><br/>
           <Link to="/addDebit">Add debit</Link><br/>
