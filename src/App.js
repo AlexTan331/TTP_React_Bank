@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./Components/Home";
-import UserProfile from "./Components/UserProfile";
-import LogIn from "./Components/LogIn";
-import AddCredit from "./Components/AddCredit";
-import AddDebit from "./Components/AddDebit";
 import Axios from "axios";
+import index, {
+  Home,
+  UserProfile,
+  LogIn,
+  AddCredit,
+  AddDebit,
+} from "./Components/index";
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +57,7 @@ class App extends Component {
 
   addCredit = (credit) => {
     let newCredit = [credit, ...this.state.creditInfo];
-    this.setState({creditInfo: newCredit});
+    this.setState({ creditInfo: newCredit });
     this.setState({
       accountBalance: this.state.accountBalance + parseInt(credit.amount),
     });
@@ -63,7 +65,7 @@ class App extends Component {
 
   addDebit = (debit) => {
     let newDebit = [debit, ...this.state.debitInfo];
-    this.setState({debitInfo: newDebit});
+    this.setState({ debitInfo: newDebit });
     this.setState({ accountBalance: this.state.accountBalance - debit.amount });
   };
 
@@ -101,19 +103,17 @@ class App extends Component {
 
     return (
       <Router>
-        <switch>
-          <div>
-            <Route exact path="/" render={HomeComponent}></Route>
-            <Route
-              exact
-              path="/userProfile"
-              render={UserProfileComponent}
-            ></Route>
-            <Route exact path="/LogIn" render={LogInComponent} />
-            <Route exact path="/AddCredit" render={AddCreditComponent}></Route>
-            <Route exact path="/AddDebit" render={AddDebitComponent}></Route>
-          </div>
-        </switch>
+        <div>
+          <Route exact path="/" render={HomeComponent}></Route>
+          <Route
+            exact
+            path="/userProfile"
+            render={UserProfileComponent}
+          ></Route>
+          <Route exact path="/LogIn" render={LogInComponent} />
+          <Route exact path="/AddCredit" render={AddCreditComponent}></Route>
+          <Route exact path="/AddDebit" render={AddDebitComponent}></Route>
+        </div>
       </Router>
     );
   }
