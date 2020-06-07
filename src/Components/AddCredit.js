@@ -5,7 +5,12 @@ class AddCredit extends Component {
   constructor() {
     super();
     this.state = {
-      info: null,
+      info: {
+        id: "",
+        description: "",
+        amount: 0,
+        date: "",
+      },
       redirect: false,
     };
   }
@@ -49,17 +54,18 @@ class AddCredit extends Component {
           <form onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="amount">Credit Amount</label>
-              <input type="text" name="amount" onChange={this.handleChange} />
+              <input type="number" name="amount" value={this.state.info.amount} onChange={this.handleChange} />
             </div>
             <div>
               <label htmlFor="description">Description</label>
               <input
                 type="text"
                 name="description"
+                value={this.state.info.description}
                 onChange={this.handleChange}
               />
             </div>
-            <button>Confirm</button>
+            <button disabled={!(this.state.info.amount && this.state.info.description)}>Confirm</button>
           </form>
         </div>
         {display}
