@@ -12,8 +12,8 @@ class App extends Component {
     super(props);
     this.state = {
       accountBalance: 0,
-      debitInfo: null,
-      creditInfo: null,
+      debitInfo: [],
+      creditInfo: [],
       currentUser: {
         userName: "bob_loblaw",
         memberSince: "06-03-2010",
@@ -54,12 +54,16 @@ class App extends Component {
   };
 
   addCredit = (credit) => {
+    let newCredit = [credit, ...this.state.creditInfo];
+    this.setState({creditInfo: newCredit});
     this.setState({
       accountBalance: this.state.accountBalance + parseInt(credit.amount),
     });
   };
 
   addDebit = (debit) => {
+    let newDebit = [debit, ...this.state.debitInfo];
+    this.setState({debitInfo: newDebit});
     this.setState({ accountBalance: this.state.accountBalance - debit.amount });
   };
 

@@ -20,7 +20,10 @@ class AddCredit extends Component {
     const inputField = e.target.name;
     const inputValue = e.target.value;
     updatedCredit[inputField] = inputValue;
-
+    let date = new Date();
+    updatedCredit.date = date.toISOString();
+    let id = Math.random().toString(36).slice(2);
+    updatedCredit.id = id;
     this.setState({ info: updatedCredit });
   };
 
@@ -37,7 +40,7 @@ class AddCredit extends Component {
 
     let display = this.props.creditInfo.map((debit) => {
       return (
-        <div className="info">
+        <div className="info" key={debit.id}>
           <ul>
             <li>Description: {debit.description}</li>
             <li>Amount: {debit.amount}</li>
@@ -54,7 +57,12 @@ class AddCredit extends Component {
           <form onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="amount">Credit Amount</label>
-              <input type="number" name="amount" value={this.state.info.amount} onChange={this.handleChange} />
+              <input
+                type="number"
+                name="amount"
+                value={this.state.info.amount}
+                onChange={this.handleChange}
+              />
             </div>
             <div>
               <label htmlFor="description">Description</label>
@@ -65,7 +73,13 @@ class AddCredit extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <button disabled={!(this.state.info.amount && this.state.info.description)}>Confirm</button>
+            <button
+              disabled={
+                !(this.state.info.amount && this.state.info.description)
+              }
+            >
+              Confirm
+            </button>
           </form>
         </div>
         {display}

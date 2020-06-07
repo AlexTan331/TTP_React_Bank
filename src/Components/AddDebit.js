@@ -20,7 +20,10 @@ class AddDebit extends Component {
     const inputField = e.target.name;
     const inputValue = e.target.value;
     updatedDebit[inputField] = inputValue;
-
+    let date = new Date();
+    updatedDebit.date = date.toISOString();
+    let id = Math.random().toString(36).slice(2);
+    updatedDebit.id = id;
     this.setState({ info: updatedDebit });
   };
 
@@ -37,11 +40,11 @@ class AddDebit extends Component {
 
     let display = this.props.debitInfo.map((debit) => {
       return (
-        <div className="info">
+        <div className="info" key={debit.id}>
           <ul>
             <li>Description: {debit.description}</li>
             <li>Amount: {debit.amount}</li>
-            <li>Date: {debit.date}</li>
+            <li>Date: {debit.date.toString()}</li>
           </ul>
         </div>
       );
@@ -54,7 +57,12 @@ class AddDebit extends Component {
           <form onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="amount">Debit Amount</label>
-              <input type="number" name="amount" value={this.state.info.amount} onChange={this.handleChange} />
+              <input
+                type="number"
+                name="amount"
+                value={this.state.info.amount}
+                onChange={this.handleChange}
+              />
             </div>
             <div>
               <label htmlFor="description">Description</label>
@@ -65,7 +73,13 @@ class AddDebit extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <button disabled={!(this.state.info.amount && this.state.info.description)}>Confirm</button>
+            <button
+              disabled={
+                !(this.state.info.amount && this.state.info.description)
+              }
+            >
+              Confirm
+            </button>
           </form>
         </div>
         {display}
