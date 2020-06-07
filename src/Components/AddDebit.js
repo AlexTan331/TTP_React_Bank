@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 class AddDebit extends Component {
   constructor(props) {
     super(props);
@@ -52,6 +52,7 @@ class AddDebit extends Component {
 
     return (
       <>
+        <Link to="/">Home Page</Link>
         <div>
           <h1>Add Your Debit Amount</h1>
           <form onSubmit={this.handleSubmit}>
