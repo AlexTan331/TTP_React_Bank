@@ -20,10 +20,6 @@ class AddCredit extends Component {
     const inputField = e.target.name;
     const inputValue = e.target.value;
     updatedCredit[inputField] = inputValue;
-    let date = new Date();
-    updatedCredit.date = date.toISOString();
-    let id = Math.random().toString(36).slice(2);
-    updatedCredit.id = id;
     this.setState({ info: updatedCredit });
   };
 
