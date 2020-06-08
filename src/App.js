@@ -56,6 +56,10 @@ class App extends Component {
   };
 
   addCredit = (credit) => {
+    let date = new Date();
+    credit.date = date.toISOString();
+    let id = Math.random().toString(36).slice(2);
+    credit.id = id;
     let newCredit = [credit, ...this.state.creditInfo];
     this.setState({ creditInfo: newCredit });
     this.setState({
@@ -64,6 +68,10 @@ class App extends Component {
   };
 
   addDebit = (debit) => {
+    let date = new Date();
+    debit.date = date.toISOString();
+    let id = Math.random().toString(36).slice(2);
+    debit.id = id;
     let newDebit = [debit, ...this.state.debitInfo];
     this.setState({ debitInfo: newDebit });
     this.setState({ accountBalance: this.state.accountBalance - debit.amount });

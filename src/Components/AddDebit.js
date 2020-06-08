@@ -20,10 +20,6 @@ class AddDebit extends Component {
     const inputField = e.target.name;
     const inputValue = e.target.value;
     updatedDebit[inputField] = inputValue;
-    let date = new Date();
-    updatedDebit.date = date.toISOString();
-    let id = Math.random().toString(36).slice(2);
-    updatedDebit.id = id;
     this.setState({ info: updatedDebit });
   };
 
